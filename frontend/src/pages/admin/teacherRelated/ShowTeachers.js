@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
@@ -45,14 +46,14 @@ const ShowTeachers = () => {
     }
 
     const deleteHandler = (deleteID, address) => {
-        console.log(deleteID);
-        console.log(address);
-        setMessage("Sorry the delete function has been disabled for now.")
-        setShowPopup(true)
+        // console.log(deleteID);
+        // console.log(address);
+        // setMessage("Sorry the delete function has been disabled for now.")
+        // setShowPopup(true)
 
-        // dispatch(deleteUser(deleteID, address)).then(() => {
-        //     dispatch(getAllTeachers(currentUser._id));
-        // });
+        dispatch(deleteUser(deleteID, address)).then(() => {
+            dispatch(getAllTeachers(currentUser._id));
+        });
     };
 
     const columns = [

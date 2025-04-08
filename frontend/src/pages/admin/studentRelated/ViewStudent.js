@@ -1,13 +1,14 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteUser, getUserDetails, updateUser } from '../../../redux/userRelated/userHandle';
 import { useNavigate, useParams } from 'react-router-dom'
 import { getSubjectList } from '../../../redux/sclassRelated/sclassHandle';
-import { Box, Button, Collapse, IconButton, Table, TableBody, TableHead, Typography, Tab, Paper, BottomNavigation, BottomNavigationAction, Container } from '@mui/material';
+import { Box, Button, Collapse, IconButton, Table, TableBody, TableHead, Typography, Tab, Paper, BottomNavigation, BottomNavigationAction, Container, Card, Grid } from '@mui/material';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import { KeyboardArrowUp, KeyboardArrowDown, Delete as DeleteIcon } from '@mui/icons-material';
+import { KeyboardArrowUp, KeyboardArrowDown, Delete as DeleteIcon, Person, Badge, School } from '@mui/icons-material';
 import { removeStuff, updateStudentFields } from '../../../redux/studentRelated/studentHandle';
 import { calculateOverallAttendancePercentage, calculateSubjectAttendancePercentage, groupAttendanceBySubject } from '../../../components/attendanceCalculator';
 import CustomBarChart from '../../../components/CustomBarChart'
@@ -341,59 +342,66 @@ const ViewStudent = () => {
 
     const StudentDetailsSection = () => {
         return (
-            <div>
-                Name: {userDetails.name}
-                <br />
-                Roll Number: {userDetails.rollNum}
-                <br />
-                Class: {sclassName.sclassName}
-                <br />
-                School: {studentSchool.schoolName}
-                {
-                    subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
+            <Card 
+                elevation={3}
+                sx={{
+                    p: 3,
+                    mb: 3,
+                    background: 'linear-gradient(to right bottom, #ffffff, #fafafa)',
+                    borderRadius: 2,
+                    maxWidth: 600,
+                    mx: 'auto'
+                }}
+            >
+                <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                        <Typography variant="h5" sx={{ mb: 3, color: 'primary.main', fontWeight: 'medium' }}>
+                            Student Details
+                        </Typography>
+                    </Grid>
+                    {[
+                        { label: 'Name', value: userDetails.name, icon: <Person color="primary" /> },
+                        { label: 'Roll Number', value: userDetails.rollNum, icon: <Badge color="primary" /> },
+                        { label: 'Class', value: sclassName.sclassName, icon: <School color="primary" /> },
+                        { label: 'School', value: studentSchool.schoolName, icon: <School color="primary" /> }
+                    ].map((item) => (
+                        <Grid item xs={12} sm={6} key={item.label}>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 1,
+                                    p: 2,
+                                    borderRadius: 1,
+                                    bgcolor: 'background.paper',
+                                    boxShadow: '0 0 10px rgba(0,0,0,0.05)',
+                                    transition: 'transform 0.2s ease-in-out',
+                                    '&:hover': {
+                                        transform: 'translateY(-2px)',
+                                        boxShadow: '0 4px 15px rgba(0,0,0,0.08)'
+                                    }
+                                }}
+                            >
+                                {item.icon}
+                                <Box>
+                                    <Typography variant="caption" color="text.secondary">
+                                        {item.label}
+                                    </Typography>
+                                    <Typography variant="body1" fontWeight="medium">
+                                        {item.value}
+                                    </Typography>
+                                </Box>
+                            </Box>
+                        </Grid>
+                    ))}
+                </Grid>
+                {subjectAttendance && Array.isArray(subjectAttendance) && subjectAttendance.length > 0 && (
+                    <Box sx={{ mt: 3 }}>
                         <CustomPieChart data={chartData} />
-                    )
-                }
-                <Button variant="contained" sx={styles.styledButton} onClick={deleteHandler}>
-                    Delete
-                </Button>
-                <br />
-                {/* <Button variant="contained" sx={styles.styledButton} className="show-tab" onClick={() => { setShowTab(!showTab) }}>
-                    {
-                        showTab
-                            ? <KeyboardArrowUp />
-                            : <KeyboardArrowDown />
-                    }
-                    Edit Student
-                </Button>
-                <Collapse in={showTab} timeout="auto" unmountOnExit>
-                    <div className="register">
-                        <form className="registerForm" onSubmit={submitHandler}>
-                            <span className="registerTitle">Edit Details</span>
-                            <label>Name</label>
-                            <input className="registerInput" type="text" placeholder="Enter user's name..."
-                                value={name}
-                                onChange={(event) => setName(event.target.value)}
-                                autoComplete="name" required />
-
-                            <label>Roll Number</label>
-                            <input className="registerInput" type="number" placeholder="Enter user's Roll Number..."
-                                value={rollNum}
-                                onChange={(event) => setRollNum(event.target.value)}
-                                required />
-
-                            <label>Password</label>
-                            <input className="registerInput" type="password" placeholder="Enter user's password..."
-                                value={password}
-                                onChange={(event) => setPassword(event.target.value)}
-                                autoComplete="new-password" />
-
-                            <button className="registerButton" type="submit" >Update</button>
-                        </form>
-                    </div>
-                </Collapse> */}
-            </div>
-        )
+                    </Box>
+                )}
+            </Card>
+        );
     }
 
     return (
