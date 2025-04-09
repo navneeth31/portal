@@ -71,7 +71,7 @@ const StudentHomePage = () => {
             title: 'Career Portal',
             description: 'Explore placement opportunities',
             icon: <Work />,
-            url: 'https://gctcpg.netlify.app/',
+            url: 'https://placement-guidance.onrender.com',
             color: '#0d47a1'
         }
     ];
