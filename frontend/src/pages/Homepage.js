@@ -172,21 +172,29 @@ const ContentWrapper = styled.div`
 `;
 
 const StyledTitle = styled(Typography)`
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 2rem;
     line-height: 1.2;
-
-    @media (max-width: 900px) {
+    margin-bottom: 1rem;
+    color: #333;
+    @media (max-width: 600px) {
         font-size: 2.5rem;
     }
 `;
 
 const GradientText = styled.span`
-    background: linear-gradient(135deg, #7f56da 0%, #550080 100%);
+    font-size: 4rem;
+    background: linear-gradient(45deg, #550080, #8B00FF);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: block;
+    font-weight: 800;
+    letter-spacing: -1px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    @media (max-width: 600px) {
+        font-size: 3rem;
+    }
 `;
 
 const StyledDescription = styled.div`
