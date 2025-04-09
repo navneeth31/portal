@@ -7,7 +7,7 @@ import Carousel from 'react-material-ui-carousel';
 import Students1 from "../assets/gctcName.png";
 import Students2 from "../assets/gctcView1.jpg";
 import Students3 from "../assets/gctcView2.jpg";
-import Students4 from "../assets/gctcView3.JPG";
+import Students4 from "../assets/gctc_img.jpeg";
 import { LightPurpleButton } from '../components/buttonStyles';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -83,7 +83,7 @@ const Homepage = () => {
                             </StyledTitle>
 
                             <StyledDescription>
-                                Experience seamless education management with our comprehensive portal:
+                                Experience seamless education management with our comprehensive portal.
                             </StyledDescription>
 
                             <ButtonContainer>
