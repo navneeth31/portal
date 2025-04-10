@@ -38,7 +38,10 @@ git clone https://github.com/navneeth31/portal.git
 
 2. Install dependencies:
 ```bash
-cd portal
+cd frontend
+npm install
+
+cd backend
 npm install
 ```
 
