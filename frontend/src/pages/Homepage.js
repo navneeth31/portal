@@ -16,20 +16,10 @@ const Homepage = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-    // Sample carousel items - replace with your actual images
     const carouselItems = [
-        {
-            image: Students2,
-            alt: "GCTC Campus View 1"
-        },
-        {
-            image: Students3, // Replace with different images
-            alt: "GCTC Campus View 2"
-        },
-        {
-            image: Students4, // Replace with different images
-            alt: "GCTC Campus View 3"
-        }
+        { image: Students2, alt: "GCTC Campus View 1" },
+        { image: Students3, alt: "GCTC Campus View 2" },
+        { image: Students4, alt: "GCTC Campus View 3" }
     ];
 
     useEffect(() => {
@@ -59,11 +49,7 @@ const Homepage = () => {
                                 }}
                             >
                                 {carouselItems.map((item, index) => (
-                                    <CarouselImage
-                                        key={index}
-                                        src={item.image}
-                                        alt={item.alt}
-                                    />
+                                    <CarouselImage key={index} src={item.image} alt={item.alt} />
                                 ))}
                             </Carousel>
                         </CarouselContainer>
@@ -114,6 +100,8 @@ const Homepage = () => {
 };
 
 export default Homepage;
+
+// Styled Components
 
 const StyledContainer = styled(Container)`
     min-height: 100vh;
@@ -169,6 +157,10 @@ const ContentWrapper = styled.div`
     @media (max-width: 900px) {
         padding: 1.5rem;
     }
+
+    @media (max-width: 600px) {
+        text-align: center;
+    }
 `;
 
 const StyledTitle = styled(Typography)`
@@ -178,8 +170,15 @@ const StyledTitle = styled(Typography)`
     line-height: 1.2;
     margin-bottom: 1rem;
     color: #333;
+    word-break: break-word;
+
+    @media (max-width: 900px) {
+        font-size: 2.8rem;
+    }
+
     @media (max-width: 600px) {
-        font-size: 2.5rem;
+        font-size: 2rem;
+        text-align: center;
     }
 `;
 
@@ -192,8 +191,16 @@ const GradientText = styled.span`
     letter-spacing: -1px;
     display: inline-block;
     margin-left: 0.5rem;
+
+    @media (max-width: 900px) {
+        font-size: 2.5rem;
+    }
+
     @media (max-width: 600px) {
-        font-size: 3rem;
+        font-size: 2rem;
+        display: block;
+        margin-left: 0;
+        text-align: center;
     }
 `;
 
