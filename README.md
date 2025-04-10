@@ -1,76 +1,110 @@
-# University Management Portal
+# University Portal
 
-A comprehensive system for educational institutions with role-based access control.
+A modern, responsive web application for managing university operations and student information.
 
-## Detailed Features
+## Features
 
-### Administrator Features
-- **User Management**: Create and manage admin, teacher, and student accounts
-- **Class Management**: Add/remove classes, assign teachers and students
-- **Subject Management**: Define subjects and assign to classes
-- **Notice Board**: Publish announcements visible to all users
-- **Complaint Resolution**: View and respond to student complaints
-- **Attendance Tracking**: Monitor student attendance records
-- **Performance Analysis**: View student exam results and statistics
+- 🎓 Student Management System
+- 📝 Course Registration
+- 📅 Academic Calendar
+- 📚 Course Materials
+- 📱 Mobile Responsive Design
+- 🔐 Secure Authentication
+- 🎨 Modern UI with Material Design
 
-### Teacher Features
-- **Class Dashboard**: View assigned classes and subjects
-- **Attendance Management**: Mark and update student attendance
-- **Student Profiles**: Access academic records of students
-- **Notice Access**: View important announcements
+## Tech Stack
 
-### Student Features
-- **Academic Dashboard**: View attendance, marks, and subjects
-- **Complaint Submission**: Raise concerns to teachers/admin
-- **Notice Access**: View important announcements
-- **Performance Tracking**: Monitor academic progress
+- **Frontend**: React.js with Material-UI
+- **Styling**: Styled Components
+- **Animations**: Framer Motion
+- **State Management**: React Context API
+- **Routing**: React Router
+- **Backend**: Node.js with Express
+- **Database**: MongoDB
+- **Authentication**: JWT
 
-## Technical Implementation
+## Prerequisites
 
-### Frontend Architecture
-- **Framework**: Ionic React (hybrid mobile/web)
-- **State Management**: Redux with slices for each module
-- **Navigation**: React Router with protected routes
-- **UI Components**: Reusable templates for tables, forms, and charts
-- **Responsive Design**: Mobile-first approach with adaptive layouts
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB
 
-### Backend Services
-- **API**: RESTful endpoints with Express.js
-- **Authentication**: JWT-based role verification
-- **Database**: MongoDB with Mongoose schemas
-- **Validation**: Request sanitization and validation
-- **Error Handling**: Structured error responses
+## Installation
 
-## Development Setup
+1. Clone the repository:
+```bash
+git clone https://github.com/navneeth31/portal.git
+```
 
-### Requirements
-- Node.js v16+
-- MongoDB (local or cloud instance)
-- Ionic CLI (for frontend)
+2. Install dependencies:
+```bash
+cd portal
+npm install
+```
 
-### Installation Steps
-1. Clone repository
-2. Install dependencies in both frontend and backend
-3. Configure environment variables
-4. Start development servers
+3. Set up environment variables:
+Create a `.env` file in the backend directory with the following variables:
+```
+PORT=3000
+MONGODB_URI=your_mongodb_uri
+JWT_SECRET=your_jwt_secret
+```
+
+4. Start the development servers:
+- Frontend: `npm start`
+- Backend: `npm run backend`
 
 ## Project Structure
 
 ```
-backend/
-├── controllers/  # Business logic handlers
-├── models/       # Database schemas
-├── routes/       # API endpoint definitions
-└── index.js      # Server configuration
-
-frontend/
-├── src/
-│   ├── pages/    # Role-specific interfaces
-│   ├── redux/    # State management
-│   ├── assets/   # Images and icons
-│   └── App.js    # Main application entry
+portal/
+├── backend/           # Backend server code
+├── frontend/          # React frontend application
+│   ├── src/
+│   │   ├── components/  # Reusable UI components
+│   │   ├── pages/      # Page components
+│   │   ├── assets/     # Images and static files
+│   │   └── styles/     # Global styles and themes
+├── .gitignore         # Git ignore file
+├── package.json       # Project dependencies
+└── README.md          # This file
 ```
 
-## Getting Help
+## Running the Application
 
-For technical support or contribution guidelines, please contact the development team.
+1. Start the backend server:
+```bash
+cd backend
+npm start
+```
+
+2. In a new terminal, start the frontend:
+```bash
+cd frontend
+npm start
+```
+
+The application will be available at `http://localhost:3000`
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue in the GitHub repository.
+
+## Acknowledgments
+
+- Material-UI for the design system
+- Framer Motion for smooth animations
+- Styled Components for styling
+- React Router for navigation
