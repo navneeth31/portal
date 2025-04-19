@@ -16,12 +16,19 @@ const StudentHomePage = () => {
     const { userDetails, currentUser, loading, response } = useSelector((state) => state.user);
     const { subjectsList } = useSelector((state) => state.sclass);
     const [subjectAttendance, setSubjectAttendance] = useState([]);
-    const classID = currentUser.sclassName._id;
+    
+    // Add null checking for currentUser and sclassName
+    const classID = currentUser && currentUser.sclassName ? currentUser.sclassName._id : null;
 
     useEffect(() => {
-        dispatch(getUserDetails(currentUser._id, "Student"));
-        dispatch(getSubjectList(classID, "ClassSubjects"));
-    }, [dispatch, currentUser._id, classID]);
+        if (currentUser && currentUser._id) {
+            dispatch(getUserDetails(currentUser._id, "Student"));
+            
+            if (classID) {
+                dispatch(getSubjectList(classID, "ClassSubjects"));
+            }
+        }
+    }, [dispatch, currentUser, classID]);
 
     const numberOfSubjects = subjectsList && subjectsList.length;
 
@@ -71,7 +78,7 @@ const StudentHomePage = () => {
             title: 'Career Portal',
             description: 'Explore placement opportunities',
             icon: <Work />,
-            url: 'https://gctcpg.netlify.app/',
+            url: 'https://placement-guidance.onrender.com/',
             color: '#0d47a1'
         }
     ];

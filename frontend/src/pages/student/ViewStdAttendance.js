@@ -43,11 +43,11 @@ const ViewStdAttendance = () => {
         }
     }, [userDetails])
 
-    const attendanceBySubject = groupAttendanceBySubject(subjectAttendance)
+    const attendanceBySubject = groupAttendanceBySubject(subjectAttendance);
 
     const overallAttendancePercentage = calculateOverallAttendancePercentage(subjectAttendance);
 
-    const subjectData = Object.entries(attendanceBySubject).map(([subName, { subCode, present, sessions }]) => {
+    const subjectData = Object.entries(attendanceBySubject || {}).map(([subName, { subCode, present, sessions }]) => {
         const subjectAttendancePercentage = calculateSubjectAttendancePercentage(present, sessions);
         return {
             subject: subName,
